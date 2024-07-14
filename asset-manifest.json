@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/coolchat-front/static/css/main.3e876b74.css",
+    "main.js": "/coolchat-front/static/js/main.7fae0e1e.js",
+    "index.html": "/coolchat-front/index.html",
+    "main.3e876b74.css.map": "/coolchat-front/static/css/main.3e876b74.css.map",
+    "main.7fae0e1e.js.map": "/coolchat-front/static/js/main.7fae0e1e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3e876b74.css",
+    "static/js/main.7fae0e1e.js"
+  ]
+}
