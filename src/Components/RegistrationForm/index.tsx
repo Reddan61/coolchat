@@ -8,7 +8,7 @@ import { renderTextField } from "../Formik/Fields/Fields";
 import { AUTH_REDUCERS_TYPES, AuthReducerActions, RegistrationFormDataType } from "../../Redux/Reducers/authReducer";
 import { AuthApi } from "../../API/Auth";
 import { isSuccess } from "../../Utils/api";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 
 interface Props {
   onCancel: () => void;

@@ -1,10 +1,8 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { Box, Button, makeStyles } from "@material-ui/core";
 import { ForgotDialog } from "../../Components/ForgotDialog";
 import { LoginDialog } from "../../Components/LoginDialog";
 import { RegistrationDialog } from "../../Components/RegistrationDialog";
-import { useAppSelector } from "../../Redux/store";
-import { useNavigate } from "react-router-dom";
 
 const useStyle = makeStyles({
   root: {
