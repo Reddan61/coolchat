@@ -11,6 +11,8 @@ import { useEffect, useState } from "react";
 
 export const useAuth = () => {
   const dispatch = useDispatch();
+  const isAuth = useAppSelector(state => state.AuthPage.isAuth)
+
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -34,6 +36,7 @@ export const useAuth = () => {
   };
 
   return {
-    isLoading
+    isLoading,
+    isAuth
   };
 };

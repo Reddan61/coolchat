@@ -8,6 +8,7 @@ import { renderTextField } from "../Formik/Fields/Fields";
 import { AUTH_REDUCERS_TYPES, AuthReducerActions, RegistrationFormDataType } from "../../Redux/Reducers/authReducer";
 import { AuthApi } from "../../API/Auth";
 import { isSuccess } from "../../Utils/api";
+import axios, { AxiosError } from "axios";
 
 interface Props {
   onCancel: () => void;
@@ -28,10 +29,19 @@ export const RegistrationForm: FC<Props> = ({ onCancel, close }) => {
         enqueueSnackbar("Успешно!");
         close();
       }
-    } catch {
-      enqueueSnackbar("Что-то пошло не так!", {
-        variant: "error",
-      });
+    } catch(err: any) {
+      if(!axios.isAxiosError(err)) return;
+      const status = err.response?.status;
+
+      if (status === 400) {
+        enqueueSnackbar("Такой пользователь уже существует!", {
+          variant: "error",
+        });
+      } else {
+        enqueueSnackbar("Что-то пошло не так!", {
+          variant: "error",
+        });
+      }
     }
   };
   

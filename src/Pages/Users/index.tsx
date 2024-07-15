@@ -4,6 +4,7 @@ import { Pagination } from "@material-ui/lab";
 import CardUser from "../../Components/UserCard";
 import UserSearch from "../../Components/UserSearch";
 import { useUsers } from "../../hooks/useUsers";
+import Loader from "../../Components/Loader/Loader";
 
 const Users = () => {
   const {
@@ -30,22 +31,39 @@ const Users = () => {
   return (
     <>
       <Box>
-        <UserSearch onChangeInput={onChangeSearch} />
+        <UserSearch submit={onChangeSearch} />
       </Box>
       <Box
         style={{
           marginTop: "20px",
           flex: "1 1 auto",
+          display: "flex"
         }}
       >
-        <Grid container spacing={2}>
-          {!isLoading &&
-            users?.map((user) => (
-              <Grid item xs={3} key={user._id}>
-                <CardUser user={user} />
-              </Grid>
-            ))}
-        </Grid>
+        {
+          isLoading && <Box 
+            width={"100%"} 
+            display={"flex"} 
+            flex={"1 1 auto"}
+            justifyContent={"center"}
+            alignItems={"center"}
+          >
+            <Loader />
+          </Box> 
+        }
+        {
+          !isLoading && <Grid 
+            container spacing={2}
+          >
+              {
+                users?.map((user) => (
+                  <Grid item xs={3} key={user._id}>
+                    <CardUser user={user} />
+                  </Grid>
+                ))
+              }
+          </Grid>
+        }
       </Box>
       <Container
         style={{

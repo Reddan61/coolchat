@@ -9,7 +9,7 @@ import "./index.css";
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
-      <SnackbarProvider>
+      <SnackbarProvider autoHideDuration={5000}>
         <App />
       </SnackbarProvider>
     </Provider>

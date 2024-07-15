@@ -6,6 +6,7 @@ import { Field, Form, Formik } from "formik";
 import { renderTextField } from "../../Components/Formik/Fields/Fields";
 import { AuthApi } from "../../API/Auth";
 import { isSuccess } from "../../Utils/api";
+import axios from "axios";
 
 interface Props {
   onCancel: () => void;
@@ -21,7 +22,27 @@ export const ForgotPasswordForm: React.FC<Props> = ({ onCancel }) => {
       if (isSuccess(response.status)) {
         enqueueSnackbar("Сообщение отправлено на вашу почту");
       }
-    } catch {
+    } catch(err) {
+      if(!axios.isAxiosError(err)) return;
+
+      const status = err.response?.status;
+
+      if (status === 404) {
+        enqueueSnackbar("Пользователь не найден!", {
+          variant: "error",
+        });
+
+        return;
+      }
+
+      if (status === 406) {
+        enqueueSnackbar("Почта не подтверждена!", {
+          variant: "error",
+        });
+
+        return;
+      }
+
       enqueueSnackbar("Что-то пошло не так!", {
         variant: "error",
       });

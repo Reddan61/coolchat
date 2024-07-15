@@ -12,7 +12,7 @@ const Profile = () => {
   const avatarChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
 
-    if (!file) return null;
+    if (!file) return;
 
     if (validateFile(file)) {
       updateAvatar(file);

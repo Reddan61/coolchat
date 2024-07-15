@@ -3,23 +3,28 @@ import { Field, Form, Formik } from "formik";
 import { renderTextField } from "../Formik/Fields/Fields";
 
 interface Props {
-  onChangeInput: (text: string) => unknown;
+  submit: (text: string) => unknown;
+}
+interface Fields {
+  search: string
 }
 
-const UserSearch: FC<Props> = ({ onChangeInput }) => {
+const UserSearch: FC<Props> = ({ submit }) => {
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null) 
 
-  const submit = (values: { search: string }) => {
+  const submitForm = (values: Fields) => {
     clearTimeout(timeoutRef.current ?? undefined);
 
     timeoutRef.current = setTimeout(() => {
-      onChangeInput(values.search.trim());
+      submit(values.search.trim());
     }, 1000);
-  };
+  }
 
   return (
-    <Formik initialValues={{ search: "" }} onSubmit={submit}>
-      {({ handleChange, submitForm, isSubmitting }) => (
+    <Formik initialValues={{ search: "" }} 
+      onSubmit={submitForm}
+    >
+      {({ handleChange, submitForm }) => (
         <Form>
           <Field
             fullWidth
@@ -29,10 +34,8 @@ const UserSearch: FC<Props> = ({ onChangeInput }) => {
             name="search"
             component={renderTextField}
             onChange={(e: any) => {
-              if (isSubmitting) return;
-              
               handleChange(e);
-              submitForm();
+              submitForm()
             }}
           />
         </Form>

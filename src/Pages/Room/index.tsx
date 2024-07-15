@@ -19,7 +19,18 @@ export const Room: FC = () => {
     navigate("/rooms");
   };
 
-  if (isLoading) return <Loader />;
+  if (isLoading) {
+    return <Box
+      display={"flex"}
+      justifyContent={"center"}
+      alignItems={"center"}
+      flex={"1 1 auto"}
+      flexDirection={"column"}
+      width={"100%"}
+    >
+      <Loader />
+    </Box>
+  } 
 
   return (
     <Container className={classes.root}>

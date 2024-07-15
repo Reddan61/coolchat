@@ -1,19 +1,7 @@
-import { Box, CircularProgress } from "@material-ui/core";
-import React from "react";
-
-
+import { CircularProgress } from "@material-ui/core";
 
 const Loader = () => {
-    return <Box style = {{
-        position:'absolute',
-        width:"100%",
-        minHeight:"100vh",
-        display:"flex",
-        justifyContent:"center",
-        alignItems:"center"
-    }}>
-        <CircularProgress  size = {60}/>
-    </Box>
+    return <CircularProgress size = {60}/>
 }
 
 export default Loader;

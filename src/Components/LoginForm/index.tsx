@@ -8,6 +8,7 @@ import { AUTH_REDUCERS_TYPES, AuthReducerActions, LoginFormDataType } from "../.
 import { AuthApi } from "../../API/Auth";
 import { isSuccess } from "../../Utils/api";
 import { useNavigate } from "react-router-dom";
+import { useSnackbar } from "notistack";
 
 interface Props {
   onCancel: () => void;
@@ -17,6 +18,7 @@ interface Props {
 export const LoginForm: FC<Props> = ({ onCancel, onForgot }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar()
 
   const login = async (values: LoginFormDataType) => {
     try {
@@ -27,7 +29,7 @@ export const LoginForm: FC<Props> = ({ onCancel, onForgot }) => {
         return true;
       }
     } catch {
-      enqueueSnackbar("Ошибка авторизации", {
+      enqueueSnackbar("Неправильный логин или пароль!", {
         variant: "error",
       });
     }
@@ -116,7 +118,3 @@ const LoginSchema = Yup.object().shape({
     .min(6, "Слишком короткий пароль")
     .required("Необходимое поле"),
 });
-function enqueueSnackbar(arg0: string, arg1: { variant: string; }) {
-  throw new Error("Function not implemented.");
-}
-

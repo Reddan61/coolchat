@@ -20,8 +20,6 @@ export const Container = () => {
           flexDirection: "column",
           flex: "1 1 auto",
           padding: "20px",
-          maxHeight: "100%",
-          overflow: "hidden",
         }}
       >
         <PrivateRoute>
