@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/coolchat-front/static/css/main.3e876b74.css",
-    "main.js": "/coolchat-front/static/js/main.24c9c9ff.js",
+    "main.js": "/coolchat-front/static/js/main.05f0192e.js",
     "index.html": "/coolchat-front/index.html",
     "main.3e876b74.css.map": "/coolchat-front/static/css/main.3e876b74.css.map",
-    "main.24c9c9ff.js.map": "/coolchat-front/static/js/main.24c9c9ff.js.map"
+    "main.05f0192e.js.map": "/coolchat-front/static/js/main.05f0192e.js.map"
   },
   "entrypoints": [
     "static/css/main.3e876b74.css",
-    "static/js/main.24c9c9ff.js"
+    "static/js/main.05f0192e.js"
   ]
 }
