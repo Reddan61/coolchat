@@ -10,7 +10,6 @@ export const RoomCard: React.FC<{ room: Room }> = ({ room }) => {
     return room.users
       .map((user) => user.username)
       .join(`/`)
-      .slice(0, 20);
   }, [room.users]);
 
   const onRoomClick = () => {
@@ -26,7 +25,12 @@ export const RoomCard: React.FC<{ room: Room }> = ({ room }) => {
       }}
     >
       <CardContent>
-        <Typography>{roomName} ...</Typography>
+        <Typography style={{
+          maxWidth: "100%",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap"
+        }}>{roomName}</Typography>
       </CardContent>
     </Card>
   );
